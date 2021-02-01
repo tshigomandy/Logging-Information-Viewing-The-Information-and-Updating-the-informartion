@@ -1,0 +1,81 @@
+<br>
+<br>
+<div class="bg">
+  <div class="example-container mat-elevation-z8">
+  <h1>{{actionType}} Log an Incident</h1>
+
+  <div class="example-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+<div class="content">
+  <mat-card class="example-card">
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="form-group row">
+      
+    <label class ="control-label col-md-12" for="descriptionLabel">Please enter the incident description</label>
+    <span class="required-field"></span>
+    <div class="col-md-12">
+    <input type="text" #input formControlName= "Description"pattern="[a-zA-Z0-9\s]*" maxlength="255" minlength="4" placeholder="Enter description" required>
+    <span style="color:rgb(255, 0, 0)" class="text-danger" *ngIf="form.controls['Description'].hasError('required') &&
+        (form.controls['Description'].dirty || form.controls['Description'].touched)">Description is required, minimum value is 4.
+      </span>
+
+      <br/>
+    <br>
+    <!-- <input type="text"  formControlName= "Location"pattern="[a-zA-Z0-9\s]*" name="Location" minlength="4" maxlength="255" placeholder="Enter location" required> -->
+    
+    
+    
+    
+    
+    <!-- <span class="text-danger" *ngIf="form.controls['incident_Location'].hasError('required') &&
+    (form.controls['incident_Location'].dirty || form.controls['incident_Location'].touched)">Last Name is required</span>
+    <br/> -->
+
+    
+  </div>    
+  
+    
+  
+    <label for="li">Please select the incident location</label> 
+    <span class="required-field"></span> 
+    <select  id="location" name="location" matNativeControl  formControlName= "Location" placeholder="Enter location" required>
+      <option label="Pick a room" [disabled]="true" selected>Pick a room</option>
+      <option value="floor: 2, Room: Siyabonga">floor2 Room: Siyabonga</option>
+      <option value="floor: 2, Room: Boardroom">floor2 Room :Boardroom</option>
+      <option value="floor: 2, Room: Aranka Office">floor2 Room: Aranka Office</option>
+      <option value="floor: 2, Room: Cindy Office">floor2 Room :Cindy Office</option>
+      <option value="floor: 2, Room: Basil Office">floor2 Room: Basil Office</option>
+      <option value="floor: 2, Room: Boardroom">floor2 Room: Kitchen</option>
+      <option value="floor: 2, Room: Pause Area">floor2 Room: Pause</option>
+      <option value="floor: 1, Room: Dumela">floor1 Room: Dumela</option>
+      <option value="floor: 1, Room: Abusheni">floor1 Room: Abusheni</option>
+      <option value="floor: 1, Room: Thobela">floor1 Room: Thobela</option>
+      <option value="floor: 1, Room: Nadine Office">floor1 Room: Nadine Office</option>
+      <option value="floor: 1, Room: Pause Area">floor1 Room: Pause Area</option>
+      <option value="floor: 1, Room: Project Office">floor1 Room: Project Office</option>
+      <option value="floor: 1, Room: Reception">floor1 Room: Reception</option>
+      <option value="floor: 1, Room: Molo">floor1 Room: Molo</option>
+      <option value="floor: 1, Room: Exam Centre">floor1 Room: Exam Centre</option>
+      <option value="floor: 1, Room: Sanibonani">floor1 Room: Sanibonani</option>
+      <option value="floor: 1, Room: Avuwani">floor1 Room: Avuwani</option>
+      <option value="floor: 1, Room: Store Room">floor1 Room: Store Room</option>
+      <option value="floor: 1, Room: Server Room">floor1 Room: Server room</option>
+    </select>
+    <!-- <mat-error *ngIf="Location.hasError('required')">
+      This field is required
+    </mat-error> -->
+  
+    <!-- <input form ="logInci" type="submit" value="Submit"  (click)="openDialog()">  -->
+    <!-- <button mat-button (click)="openDialog()">Submit</button>  -->
+
+  </div>
+  <div class="form-group">
+    <button type="submit" [disabled]="!form.valid" mat-flat-button color="primary">save</button>
+    <button mat-flat-button color="warn" (click)="cancel()">Cancel</button>
+  </div>
+  </form>
+ 
+</mat-card>
+</div>
+</div>

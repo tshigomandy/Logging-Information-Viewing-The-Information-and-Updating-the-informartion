@@ -1,0 +1,32 @@
+
+<div class="bg">
+<h1>View logged Incidents</h1>
+<p *ngIf="!(incidents )"><em>Loading...</em></p> 
+<input [routerLink]="['/log']"  type="submit" name="update_submit" value="Log new Incident" />
+<br>
+
+<div class="inciTable" style="overflow-x:auto" >
+<table id ="incidents"  class="table table-sm table-hover" *ngIf="incidents ">
+    <tr >
+      <th>#</th>
+      <th>Description</th>
+      <th>Location</th>
+      <th>Status</th>
+      <th>Date logged</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let inci of incidents">
+      <td>{{inci.id}}</td>
+      <td>{{inci.description}}</td>
+      <td>{{inci.location}}</td>
+      <td>{{inci.incidentStatus.description}} </td>
+      <td>{{inci.date_Logged}}</td>
+      <td> 
+        <!-- <a (click)="navigateToEdit(inci.incident_ID)" class="btn btn-primary float-right">Edit</a> -->
+         <input (click)="navigateToEdit(inci.id)" [disabled]="inci.statusId !== 0" [routerLink]="['/log']"  type="submit" name="update_submit" value="Edit" />
+      </td>
+
+    </tr>
+    
+  </table>
+</div>

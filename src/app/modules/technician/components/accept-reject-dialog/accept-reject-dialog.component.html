@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>You are about to {{ acceptRejectString }} the following incident</h2>
+<mat-dialog-content class="mat-typography">
+  <!-- <h3>Develop across all platforms</h3> -->
+
+    <!-- <p>ID: {{ data.incident.id }}</p>
+    <p>Location: {{ data.incident.location }}</p>
+    <p>Description: {{ data.incident.description }}</p>
+    <p>Date Logged: {{ data.incident.date_logged }}</p>
+    <p>Status: {{ data.incident.status }}</p>
+    <p>User: {{ data.incident.user }}</p> -->
+
+    <mat-form-field class="reason-field" *ngIf="!acceptReject">
+        <mat-label>Reason</mat-label>
+        <input matInput #reason [formControl]="reasonFormControl" maxlength="255" >
+        <mat-error *ngIf="reasonFormControl.hasError('required')">
+            Reason is <strong>required</strong>
+        </mat-error>
+        <!-- <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint> -->
+        <mat-hint align="end">{{reason.value.length}} / 255</mat-hint>
+    </mat-form-field>
+  
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button (click)="onConfirmClick()">Confirm</button>
+</mat-dialog-actions>

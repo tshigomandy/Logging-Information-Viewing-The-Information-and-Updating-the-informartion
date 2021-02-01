@@ -1,0 +1,64 @@
+
+<div class="bg">
+  <div class="example-container mat-elevation-z8">
+  <h1>Update an Incident</h1>
+
+  <div class="example-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+<div class="content">
+  <mat-card class="example-card">
+  <form [formGroup]="updateForm" (ngSubmit)="onFormSubmit(updateForm)">
+    <div class="form-group row">
+      
+    <label class ="control-label col-md-12" for="description">Please enter the incident description</label>
+    <span class="required-field"></span>
+    <div class="col-md-12">
+    <input type="text"  formControlName= "description"pattern="[a-zA-Z0-9\s]*" maxlength="255" placeholder="Enter description" required>
+    <br>
+    <br>
+    <label for="li">Please enter the incident location</label> 
+    <br>
+    <!-- <input type="text"  formControlName= "location"pattern="[a-zA-Z0-9\s]*" maxlength="255" placeholder="Enter location" required> -->
+      <br>
+      <select  id="location" name="location" matNativeControl  formControlName= "location" placeholder="Enter location" required>
+        <option label="Pick a room" [disabled]="true" selected>Pick a room</option>
+        <option value="floor: 2, Room: Siyabonga">floor2 Room: Siyabonga</option>
+        <option value="floor: 2, Room: Boardroom">floor2 Room :Boardroom</option>
+        <option value="floor: 2, Room: Aranka Office">floor2 Room: Aranka Office</option>
+        <option value="floor: 2, Room: Cindy Office">floor2 Room :Cindy Office</option>
+        <option value="floor: 2, Room: Basil Office">floor2 Room: Basil Office</option>
+        <option value="floor: 2, Room: Boardroom">floor2 Room: Kitchen</option>
+        <option value="floor: 2, Room: Pause Area">floor2 Room: Pause</option>
+        <option value="floor: 1, Room: Dumela">floor1 Room: Dumela</option>
+        <option value="floor: 1, Room: Abusheni">floor1 Room: Abusheni</option>
+        <option value="floor: 1, Room: Thobela">floor1 Room: Thobela</option>
+        <option value="floor: 1, Room: Nadine Office">floor1 Room: Nadine Office</option>
+        <option value="floor: 1, Room: Pause Area">floor1 Room: Pause Area</option>
+        <option value="floor: 1, Room: Project Office">floor1 Room: Project Office</option>
+        <option value="floor: 1, Room: Reception">floor1 Room: Reception</option>
+        <option value="floor: 1, Room: Molo">floor1 Room: Molo</option>
+        <option value="floor: 1, Room: Exam Centre">floor1 Room: Exam Centre</option>
+        <option value="floor: 1, Room: Sanibonani">floor1 Room: Sanibonani</option>
+        <option value="floor: 1, Room: Avuwani">floor1 Room: Avuwani</option>
+        <option value="floor: 1, Room: Store Room">floor1 Room: Store Room</option>
+        <option value="floor: 1, Room: Server Room">floor1 Room: Server room</option>
+      </select>
+  </div>    
+  
+    
+  
+    
+    <!-- <input form ="logInci" type="submit" value="Submit"  (click)="openDialog()">  -->
+    <!-- <button mat-button (click)="openDialog()">Submit</button>  -->
+
+  </div>
+  <br>
+  <div class="form-group">
+    <button type="submit" [disabled]="!updateForm.valid" mat-flat-button color="primary">Update</button>
+  </div>
+  </form>
+ 
+</mat-card>
+</div>
+</div>
